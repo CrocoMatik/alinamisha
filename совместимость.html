@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Совместимость: Алина ♡ Миша</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    html {
+      font-size: 10px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 50%, #16213e 100%);
+      min-height: 100vh;
+      color: #e0e0e0;
+      overflow-x: hidden;
+    }
+
+    /* Звёздный фон */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 2s infinite ease-in-out alternate;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.3; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 120rem;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* Заголовок */
+    header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffd700 0%, #ff6b9d 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% { filter: drop-shadow(0 0 2rem rgba(255, 107, 157, 0.3)); }
+      50% { filter: drop-shadow(0 0 4rem rgba(255, 107, 157, 0.6)); }
+    }
+
+    header p {
+      font-size: 1.8rem;
+      color: #a0a0c0;
+      font-weight: 300;
+    }
+
+    /* Карточки персон */
+    .persons {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+
+    .person-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(2rem);
+      border: 0.1rem solid rgba(255, 255, 255, 0.1);
+      border-radius: 2.4rem;
+      padding: 3rem;
+
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .person-card:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: 0 2rem 6rem rgba(255, 107, 157, 0.15);
+    }
+
+    .person-card.alina {
+      border-color: rgba(255, 107, 157, 0.3);
+    }
+
+    .person-card.misha {
+      border-color: rgba(100, 149, 237, 0.3);
+    }
+
+    .person-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .person-card.alina h2 {
+      color: #ff6b9d;
+    }
+
+    .person-card.misha h2 {
+      color: #6495ed;
+    }
+
+    .person-card .date {
+      font-size: 1.4rem;
+      color: #888;
+      margin-bottom: 2rem;
+    }
+
+    .planet-list {
+      list-style: none;
+    }
+
+    .planet-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+
+      border-bottom: 0.1rem solid rgba(255, 255, 255, 0.05);
+      font-size: 1.5rem;
+    }
+
+    .planet-list li:last-child {
+      border-bottom: none;
+    }
+
+    .planet-name {
+      color: #888;
+    }
+
+    .planet-sign {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 500;
+    }
+
+    .zodiac-icon {
+      font-size: 2rem;
+    }
+
+    /* Сердце по центру */
+    .heart-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .heart {
+      font-size: 6rem;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.15); }
+    }
+
+    /* Шкала совместимости */
+    .compatibility-score {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .score-title {
+      font-size: 2rem;
+      color: #a0a0c0;
+      margin-bottom: 2rem;
+    }
+
+    .score-container {
+      position: relative;
+      width: 24rem;
+      height: 24rem;
+      margin: 0 auto 3rem;
+    }
+
+    .score-ring {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .score-ring-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.1);
+      stroke-width: 1.2rem;
+    }
+
+    .score-ring-fill {
+      fill: none;
+      stroke: url(#gradient);
+      stroke-width: 1.2rem;
+      stroke-linecap: round;
+      stroke-dasharray: 565;
+      stroke-dashoffset: 565;
+
+      transition: stroke-dashoffset 2s ease-out;
+    }
+
+    .score-ring-fill.animate {
+      stroke-dashoffset: 113;
+    }
+
+    .score-value {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffd700, #ff6b9d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .score-label {
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #c084fc;
+    }
+
+    /* Секции анализа */
+    .analysis-section {
+      margin-bottom: 4rem;
+    }
+
+    .analysis-section h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+
+      border-bottom: 0.2rem solid;
+      border-image: linear-gradient(90deg, #ff6b9d, #c084fc) 1;
+    }
+
+    .aspect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+      gap: 2rem;
+    }
+
+    .aspect-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 1.6rem;
+      padding: 2.5rem;
+
+      border-left: 0.4rem solid;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .aspect-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateX(0.5rem);
+    }
+
+    .aspect-card.positive {
+      border-color: #4ade80;
+    }
+
+    .aspect-card.neutral {
+      border-color: #fbbf24;
+    }
+
+    .aspect-card.challenging {
+      border-color: #f87171;
+    }
+
+    .aspect-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .aspect-icon {
+      font-size: 2.4rem;
+    }
+
+    .aspect-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .aspect-card.positive .aspect-title { color: #4ade80; }
+    .aspect-card.neutral .aspect-title { color: #fbbf24; }
+    .aspect-card.challenging .aspect-title { color: #f87171; }
+
+    .aspect-planets {
+      font-size: 1.4rem;
+      color: #888;
+      margin-bottom: 1rem;
+    }
+
+    .aspect-description {
+      font-size: 1.5rem;
+      line-height: 1.7;
+      color: #c0c0c0;
+    }
+
+    /* Итоговый блок */
+    .summary {
+      background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(192, 132, 252, 0.1));
+      border-radius: 2.4rem;
+      padding: 4rem;
+
+      text-align: center;
+      border: 0.1rem solid rgba(255, 107, 157, 0.2);
+    }
+
+    .summary h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      margin-bottom: 2rem;
+      color: #ffd700;
+    }
+
+    .summary p {
+      font-size: 1.8rem;
+      line-height: 1.8;
+      color: #d0d0e0;
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    /* Интерактивные табы */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      background: rgba(255, 255, 255, 0.05);
+      border: 0.1rem solid rgba(255, 255, 255, 0.1);
+      border-radius: 5rem;
+      padding: 1.2rem 2.5rem;
+
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
+      color: #a0a0c0;
+
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .tab:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .tab.active {
+      background: linear-gradient(135deg, #ff6b9d, #c084fc);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(1rem); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Адаптивность */
+    @media (max-width: 900px) {
+      .persons {
+        grid-template-columns: 1fr;
+      }
+
+      .heart-connector {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      header h1 {
+        font-size: 4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Звёздный фон -->
+  <div class="stars" id="js-stars"></div>
+
+  <div class="container">
+    <header>
+      <h1>✨ Алина & Миша ✨</h1>
+      <p>Астрологическая совместимость натальных карт</p>
+    </header>
+
+    <!-- Карточки персон -->
+    <section class="persons">
+      <div class="person-card alina">
+        <h2>♀ Алина</h2>
+        <p class="date">12 декабря 2001 • 18:25</p>
+        <ul class="planet-list">
+          <li>
+            <span class="planet-name">☉ Солнце</span>
+            <span class="planet-sign"><span class="zodiac-icon">♐</span> Стрелец</span>
+          </li>
+          <li>
+            <span class="planet-name">☽ Луна</span>
+            <span class="planet-sign"><span class="zodiac-icon">♏</span> Скорпион</span>
+          </li>
+          <li>
+            <span class="planet-name">↑ Асцендент</span>
+            <span class="planet-sign"><span class="zodiac-icon">♋</span> Рак</span>
+          </li>
+          <li>
+            <span class="planet-name">☿ Меркурий</span>
+            <span class="planet-sign"><span class="zodiac-icon">♐</span> Стрелец</span>
+          </li>
+          <li>
+            <span class="planet-name">♀ Венера</span>
+            <span class="planet-sign"><span class="zodiac-icon">♐</span> Стрелец</span>
+          </li>
+          <li>
+            <span class="planet-name">♂ Марс</span>
+            <span class="planet-sign"><span class="zodiac-icon">♓</span> Рыбы</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="heart-connector">
+        <span class="heart">💕</span>
+      </div>
+
+      <div class="person-card misha">
+        <h2>♂ Миша</h2>
+        <p class="date">27 сентября 1994 • 05:53</p>
+        <ul class="planet-list">
+          <li>
+            <span class="planet-name">☉ Солнце</span>
+            <span class="planet-sign"><span class="zodiac-icon">♎</span> Весы</span>
+          </li>
+          <li>
+            <span class="planet-name">☽ Луна</span>
+            <span class="planet-sign"><span class="zodiac-icon">♊</span> Близнецы</span>
+          </li>
+          <li>
+            <span class="planet-name">↑ Асцендент</span>
+            <span class="planet-sign"><span class="zodiac-icon">♍</span> Дева</span>
+          </li>
+          <li>
+            <span class="planet-name">☿ Меркурий</span>
+            <span class="planet-sign"><span class="zodiac-icon">♎</span> Весы</span>
+          </li>
+          <li>
+            <span class="planet-name">♀ Венера</span>
+            <span class="planet-sign"><span class="zodiac-icon">♏</span> Скорпион</span>
+          </li>
+          <li>
+            <span class="planet-name">♂ Марс</span>
+            <span class="planet-sign"><span class="zodiac-icon">♋</span> Рак</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Общий процент совместимости -->
+    <section class="compatibility-score">
+      <p class="score-title">Общая совместимость</p>
+      <div class="score-container">
+        <svg class="score-ring" viewBox="0 0 200 200">
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#ffd700"/>
+              <stop offset="50%" stop-color="#ff6b9d"/>
+              <stop offset="100%" stop-color="#c084fc"/>
+            </linearGradient>
+          </defs>
+          <circle class="score-ring-bg" cx="100" cy="100" r="90"/>
+          <circle class="score-ring-fill js-score-ring" cx="100" cy="100" r="90"/>
+        </svg>
+        <span class="score-value">80%</span>
+      </div>
+      <p class="score-label">Отличная пара! 🌟</p>
+    </section>
+
+    <!-- Табы для разделов -->
+    <div class="tabs">
+      <button class="tab active js-tab" data-tab="emotional">💝 Эмоции</button>
+      <button class="tab js-tab" data-tab="mental">💭 Интеллект</button>
+      <button class="tab js-tab" data-tab="passion">🔥 Страсть</button>
+      <button class="tab js-tab" data-tab="values">⚖️ Ценности</button>
+    </div>
+
+    <!-- Эмоциональная совместимость -->
+    <div class="tab-content active js-tab-content" id="emotional">
+      <section class="analysis-section">
+        <h3>💝 Эмоциональная связь</h3>
+        <div class="aspect-grid">
+          <div class="aspect-card positive">
+            <div class="aspect-header">
+              <span class="aspect-icon">✨</span>
+              <span class="aspect-title">Глубокая эмпатия</span>
+            </div>
+            <p class="aspect-planets">Луна Алины (Скорпион) ↔ Венера Миши (Скорпион)</p>
+            <p class="aspect-description">Потрясающее совпадение! Оба партнёра находятся в глубоком эмоциональном резонансе. Луна Алины в Скорпионе и Венера Миши в том же знаке создают мощную связь на уровне чувств. Они интуитивно понимают потребности друг друга.</p>
+          </div>
+
+          <div class="aspect-card positive">
+            <div class="aspect-header">
+              <span class="aspect-icon">🏠</span>
+              <span class="aspect-title">Домашний уют</span>
+            </div>
+            <p class="aspect-planets">Асцендент Алины (Рак) ↔ Марс Миши (Рак)</p>
+            <p class="aspect-description">Замечательное совпадение для создания семьи! Оба ценят домашний очаг и эмоциональную безопасность. Миша активно защищает и заботится о семейных ценностях, что идеально резонирует с натурой Алины.</p>
+          </div>
+
+          <div class="aspect-card neutral">
+            <div class="aspect-header">
+              <span class="aspect-icon">🌊</span>
+              <span class="aspect-title">Разные ритмы</span>
+            </div>
+            <p class="aspect-planets">Луна Алины (Скорпион) ↔ Луна Миши (Близнецы)</p>
+            <p class="aspect-description">Луны в квинконсе создают интересную динамику: Алина требует глубины и постоянства, а Миша нуждается в разнообразии и общении. Это требует взаимного понимания и гибкости.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Интеллектуальная совместимость -->
+    <div class="tab-content js-tab-content" id="mental">
+      <section class="analysis-section">
+        <h3>💭 Интеллектуальная совместимость</h3>
+        <div class="aspect-grid">
+          <div class="aspect-card positive">
+            <div class="aspect-header">
+              <span class="aspect-icon">💬</span>
+              <span class="aspect-title">Живой диалог</span>
+            </div>
+            <p class="aspect-planets">Меркурий Алины (Стрелец) ↔ Солнце Миши (Весы)</p>
+            <p class="aspect-description">Секстиль между этими планетами обеспечивает лёгкое и приятное общение. Алина расширяет горизонты Миши своим оптимизмом, а он привносит гармонию и дипломатичность в их диалоги.</p>
+          </div>
+
+          <div class="aspect-card positive">
+            <div class="aspect-header">
+              <span class="aspect-icon">🎓</span>
+              <span class="aspect-title">Общие интересы</span>
+            </div>
+            <p class="aspect-planets">Меркурий Миши (Весы) ↔ Солнце Алины (Стрелец)</p>
+            <p class="aspect-description">Оба любят обмениваться идеями и изучать новое. Стрельцовская тяга Алины к философии и путешествиям дополняется весовским стремлением Миши к искусству и эстетике.</p>
+          </div>
+
+          <div class="aspect-card neutral">
+            <div class="aspect-header">
+              <span class="aspect-icon">⚡</span>
+              <span class="aspect-title">Разные подходы</span>
+            </div>
+            <p class="aspect-planets">Меркурий Алины (Стрелец) ↔ Меркурий Миши (Весы)</p>
+            <p class="aspect-description">Оба - воздушно-огненная комбинация. Алина мыслит масштабно и прямолинейно, Миша предпочитает анализировать все стороны. Вместе они создают полную картину.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Страсть и притяжение -->
+    <div class="tab-content js-tab-content" id="passion">
+      <section class="analysis-section">
+        <h3>🔥 Физическое притяжение</h3>
+        <div class="aspect-grid">
+          <div class="aspect-card positive">
+            <div class="aspect-header">
+              <span class="aspect-icon">💫</span>
+              <span class="aspect-title">Магнетизм</span>
+            </div>
+            <p class="aspect-planets">Венера Миши (Скорпион) ↔ Луна Алины (Скорпион)</p>
+            <p class="aspect-description">Мощнейшее притяжение! Скорпионья Венера Миши находит идеальный отклик в лунной природе Алины. Между ними существует глубокая, почти магическая связь на уровне желаний.</p>
+          </div>
+
+          <div class="aspect-card positive">
+            <div class="aspect-header">
+              <span class="aspect-icon">🌹</span>
+              <span class="aspect-title">Романтика</span>
+            </div>
+            <p class="aspect-planets">Венера Алины (Стрелец) ↔ Солнце Миши (Весы)</p>
+            <p class="aspect-description">Секстиль Венеры и Солнца создаёт взаимное восхищение. Алина видит в Мише элегантность и шарм, он ценит её жизнерадостность и открытость. Они вдохновляют друг друга.</p>
+          </div>
+
+          <div class="aspect-card challenging">
+            <div class="aspect-header">
+              <span class="aspect-icon">⚔️</span>
+              <span class="aspect-title">Разная энергия</span>
+            </div>
+            <p class="aspect-planets">Марс Алины (Рыбы) ↔ Марс Миши (Рак)</p>
+            <p class="aspect-description">Оба Марса в водных знаках, что создаёт трин! Это означает гармоничный обмен энергией. Однако оба склонны к пассивности в конфликтах. Важно учиться открыто выражать желания.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Ценности и цели -->
+    <div class="tab-content js-tab-content" id="values">
+      <section class="analysis-section">
+        <h3>⚖️ Общие ценности</h3>
+        <div class="aspect-grid">
+          <div class="aspect-card positive">
+            <div class="aspect-header">
+              <span class="aspect-icon">🌍</span>
+              <span class="aspect-title">Жажда познания</span>
+            </div>
+            <p class="aspect-planets">Солнце Алины (Стрелец) ↔ Солнце Миши (Весы)</p>
+            <p class="aspect-description">Оба знака относятся к "социальным" и любят развитие. Стрелец стремится к философии и путешествиям, Весы - к гармонии и искусству. Вместе они создают богатую культурную жизнь.</p>
+          </div>
+
+          <div class="aspect-card positive">
+            <div class="aspect-header">
+              <span class="aspect-icon">👨‍👩‍👧</span>
+              <span class="aspect-title">Семейные ценности</span>
+            </div>
+            <p class="aspect-planets">Асцендент Алины (Рак) ↔ Марс Миши (Рак)</p>
+            <p class="aspect-description">Сильный показатель для создания крепкой семьи. Оба подсознательно стремятся к уюту, защите близких и эмоциональной стабильности в доме.</p>
+          </div>
+
+          <div class="aspect-card neutral">
+            <div class="aspect-header">
+              <span class="aspect-icon">💎</span>
+              <span class="aspect-title">Материальный мир</span>
+            </div>
+            <p class="aspect-planets">Асцендент Миши (Дева) ↔ Солнце Алины (Стрелец)</p>
+            <p class="aspect-description">Миша практичен и внимателен к деталям, Алина мыслит масштабно. Это квадрат, требующий компромиссов: он следит за бюджетом, она вдохновляет на новые цели.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Итоговый блок -->
+    <section class="summary">
+      <h3>✨ Вердикт звёзд</h3>
+      <p>
+        Алина и Миша создают <strong>гармоничный и страстный союз</strong>. Главное преимущество пары — глубокая эмоциональная связь благодаря Скорпионьим энергиям и общая страсть к познанию мира. 
+        <br><br>
+        Их отношения имеют все шансы перерасти в крепкую семью: Рак в картах обоих указывает на ценность домашнего очага. Советы звёзд: учитесь открыто обсуждать свои чувства (особенно Миша) и не бойтесь рутины (особенно Алина).
+        <br><br>
+        <strong>Прогноз:</strong> Долгие и счастливые отношения с глубоким взаимопониманием! 💫
+      </p>
+    </section>
+  </div>
+
+  <script>
+    // Создание звёздного фона
+    function createStars() {
+      const starsNode = document.getElementById('js-stars');
+      const count = 150;
+
+      for (let i = 0; i < count; i++) {
+        const starNode = document.createElement('div');
+        starNode.className = 'star';
+
+        const size = Math.random() * 0.3 + 0.1;
+        starNode.style.width = size + 'rem';
+        starNode.style.height = size + 'rem';
+        starNode.style.left = Math.random() * 100 + '%';
+        starNode.style.top = Math.random() * 100 + '%';
+        starNode.style.animationDelay = Math.random() * 2 + 's';
+        starNode.style.animationDuration = (Math.random() * 2 + 1) + 's';
+
+        starsNode.appendChild(starNode);
+      }
+    }
+
+    // Анимация шкалы совместимости
+    function animateScore() {
+      const ringNode = document.querySelector('.js-score-ring');
+
+      setTimeout(() => {
+        ringNode.classList.add('animate');
+      }, 500);
+    }
+
+    // Переключение табов
+    function initTabs() {
+      const tabNodes = document.querySelectorAll('.js-tab');
+      const contentNodes = document.querySelectorAll('.js-tab-content');
+
+      tabNodes.forEach((tabNode) => {
+        tabNode.addEventListener('click', () => {
+          const tabId = tabNode.dataset.tab;
+
+          tabNodes.forEach((t) => t.classList.remove('active'));
+          contentNodes.forEach((c) => c.classList.remove('active'));
+
+          tabNode.classList.add('active');
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
+    }
+
+    // Инициализация
+    document.addEventListener('DOMContentLoaded', () => {
+      createStars();
+      animateScore();
+      initTabs();
+    });
+  </script>
+</body>
+</html>
